@@ -8,9 +8,10 @@ This application is designed to run on Raspberry with Raspbian 8 (Debian Jessie)
 
 Install Raspbian Jessie Lite on a SD card: http://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/
 
-Install OpenOB on your Debian system: http://jamesharrison.github.io/openob/tutorial.html#openob-system-basics
+Install OpenOB on your Debian system: 			pip install OpenOB==4.0.3
 
-**In case of apt problems, remove python-argparse and gstreamer0.10-ffmpeg, these packets are apparently not required.**
+Install Redis Server on the receiver machine:		sudo apt-get install redis-server
+
 
 # Use the good user
 
@@ -128,7 +129,7 @@ The important part for PHP is the location ~ \.php$ {} stanza. Uncomment it like
 
 	sudo apt-get -y install git
 	cd /home/pi
-	git clone https://github.com/mickaelmonsieur/openob-gui.git
+	git clone https://github.com/RadioTech100/openob-gui.git
 	
 # Adapt nginx/PHP
 
@@ -182,12 +183,11 @@ Go to: http://raspberry_ip:80/
 
 # Community 
 
-Developpers, do not hesitate to suggest your pull requests! :)
+Developers, do not hesitate to suggest your pull requests! :)
 
-# Professional support
+# Thanks to
 
-I am available in consulting for the radios that would be interested to deploy the solution.
-(To do this through my personal website : http://www.mickael.be)
+This project is a fork from https://github.com/mickaelmonsieur/
 
 # Security
 
@@ -196,13 +196,8 @@ Neither the openOB-GUI interface, although you can add Nginx authentication, nor
 
 To connect 2 remote OpenOB over the Internet, it is strongly recommended that you set up a VPN or MPLS tunnel.
 
-# Buy me a coffee ;)
-
-[![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/Y8Y5MXCW)
-
 # Licence
 
 GNU Affero General Public License v3.0
 
 https://www.gnu.org/licenses/agpl-3.0.en.html
-
