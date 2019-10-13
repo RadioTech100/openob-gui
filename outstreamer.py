@@ -20,8 +20,10 @@ if len(sys.argv) > 1 and sys.argv[1] == 'autostart':
 		print "Autostart off"
 		sys.exit()
 
-logger_factory = LoggerFactory(level=logging.INFO)
+Log_Level= logging.INFO #INFO / DEBUG
+logger_factory = LoggerFactory(level=Log_Level)
 link_config = LinkConfig("transmission", Config.get("outstreamer", "Encoder_IP"))
+link_config.set("jitter_buffer", Config.get("outstreamer", "Jitter_Buffer"))
 audio_interface = AudioInterface("recepteur")
 link_config.set("port", Config.get("outstreamer", "Listen_Port"))
 audio_interface.set("mode", "rx")
@@ -29,4 +31,3 @@ audio_interface.set("type", "alsa")
 audio_interface.set("alsa_device", "hw:" + Config.get("outstreamer", "Soundcard_ID"))
 node = Node("recepteur")
 node.run_link(link_config, audio_interface)
-
