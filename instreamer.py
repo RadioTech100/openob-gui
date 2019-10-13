@@ -20,7 +20,8 @@ if len(sys.argv) > 1 and sys.argv[1] == 'autostart':
         print "Autostart off"
         sys.exit()
 
-logger_factory = LoggerFactory(level=logging.INFO)
+Log_Level = logging.INFO # INFO / DEBUG
+logger_factory = LoggerFactory(level=Log_Level)
 link_config = LinkConfig("transmission", Config.get("instreamer", "Encoder_IP"))
 audio_interface = AudioInterface("emetteur")
 
@@ -28,6 +29,12 @@ link_config.set("port", Config.get("instreamer", "Listen_Port"))
 link_config.set("bitrate", int(Config.get("instreamer", "Bitrate")))
 link_config.set("encoding", Config.get("instreamer", "Encoding"))
 link_config.set("receiver_host", Config.get("instreamer", "Receiver_IP"))
+link_config.set("opus_framesize", Config.get("instreamer", "Opus_Framesize"))
+link_config.set("opus_complexity", Config.get("instreamer", "Opus_Complexity"))
+link_config.set("opus_loss_expectation", Config.get("instreamer", "Opus_Loss"))
+link_config.set("jitter_buffer", Config.get("instreamer", "Jitter_Buffer"))
+link_config.set("opus_dtx", False)
+link_config.set("opus_fec", True)
 audio_interface.set("mode", "tx")
 audio_interface.set("samplerate", int(Config.get("instreamer", "Samplerate")))
 audio_interface.set("type", "alsa")
